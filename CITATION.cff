@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Cite this experimental software; replace provisional contributor metadata before Zenodo deposition."
+type: software
+title: "Reproducibility package for Simulation-Based Evaluation of an SDN-Enabled Edge-Fog-Cloud Architecture for Cloud Manufacturing Networks"
+version: 0.1.0
+authors:
+  - name: "Reproducibility package contributors"
+abstract: "Independent iFogSim2 compute-placement and Mininet/OVS network experiments with paired seeded replications, immutable observations and automated statistical analysis."
+license: MIT
+keywords:
+  - reproducibility
+  - cloud manufacturing
+  - software-defined networking
+  - edge computing
+  - iFogSim2
+  - Mininet

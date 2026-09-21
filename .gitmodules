@@ -1,0 +1,6 @@
+[submodule "third_party/ifogsim"]
+	path = third_party/ifogsim
+	url = https://github.com/Cloudslab/iFogSim.git
+[submodule "third_party/mininet"]
+	path = third_party/mininet
+	url = https://github.com/mininet/mininet.git

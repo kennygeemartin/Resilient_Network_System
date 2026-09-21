@@ -1,0 +1,6 @@
+{
+  "os": "Ubuntu 22.04", "machine": "x86_64", "python": "3.10", "java": "11",
+  "ifogsim": {"url": "https://github.com/Cloudslab/iFogSim.git", "release": "v2.0.0", "commit": "643c433"},
+  "mininet": {"url": "https://github.com/mininet/mininet.git", "version": "2.3.1b4", "commit": "88f14e9"},
+  "ovs": "3.7.1", "os_ken": "4.2.2", "openflow": "1.3"
+}

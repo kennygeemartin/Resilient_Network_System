@@ -1,0 +1,62 @@
+schema_version: 1
+architectures: [A0, A1, A2, A3]
+seeds_file: seeds.txt
+controller: {listen_host: 127.0.0.1, port: 6653}
+topology:
+  cells: 4
+  sensors_per_cell: 2
+  links:
+    edge_access: {bw_mbps: 1000, delay_ms: 0.25}
+    fog_access: {bw_mbps: 10000, delay_ms: 0.10}
+    access_aggregation: {bw_mbps: 1000, delay_ms: 0.50}
+    aggregation_core: {bw_mbps: 10000, delay_ms: 1.0}
+    core_cloud: {bw_mbps: 1000, delay_ms: 20.0}
+  max_queue_packets: 1000
+timing:
+  duration_s: 180
+  warmup_s: 30
+  fault_s: 60
+  restore_s: 90
+  recovery_end_s: 150
+  drain_s: 2
+  setup_timeout_s: 60
+  start_lead_s: 10
+traffic:
+  control_period_ms: 5
+  control_periods_ms: [1, 5, 10]
+  # Application deadlines are study assumptions, not measured values.
+  C0: {protocol: UDP, packet_bytes: 128, dscp: 46, deadline_ms: 10}
+  C1: {protocol: UDP, packet_bytes: 256, dscp: 34, deadline_ms: 20, events_per_s: 0.5}
+  C2: {protocol: UDP, packet_bytes: 512, dscp: 18, deadline_ms: 100, period_ms: 100}
+  C3: {protocol: TCP, dscp: 0, background_mbps: 100, port: 5201}
+  service_port: 9000
+  actuator_port: 9001
+  security_port: 9100
+  security_probes: 100
+  security_probe_interval_ms: 10
+faults:
+  phase1: [link_fail_stop, fog_node_fail_stop, combined_failure]
+  supplemental: [link_flapping]
+  flap_s: [60, 65, 70, 75, 80, 85]
+loads: {nominal: 1, 2x: 2, 3x: 3}
+security_attacks: [east_west, spoof_binding, restricted_port, cross_segment]
+compute:
+  max_walltime_s: 3600
+  profiles:
+    edge: {pes: 2, mips_per_pe: 2500, ram_mb: 4096, idle_w: 4, busy_w: 8}
+    fog: {pes: 4, mips_per_pe: 5000, ram_mb: 8192, idle_w: 40, busy_w: 80}
+    cloud: {pes: 16, mips_per_pe: 10000, ram_mb: 32768, idle_w: 100, busy_w: 200}
+  # Explicit workload assumptions; exposed for sensitivity analysis.
+  module_ram_mb: 128
+  module_mips: 1000
+  module_size_mb: 1000
+  host_storage: 1000000000
+  host_bw: 10000000000
+  min_event_s: 0.000001
+  resource_interval_s: 1
+  cpu_mi: {Ingest: 1, Filter: 2, Control: 1, Analytics: 10, Storage: 2}
+  tuple_bytes: 128
+  analytics_fraction: 1.0
+statistics:
+  alpha: 0.05
+  confidence: 0.95
