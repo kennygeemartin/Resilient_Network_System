@@ -10,5 +10,3 @@
   generated uncertainty figures/tables, and protocol documentation.
 * Validated native OS-Ken startup and wire messages, and handled Mininet's
   default bandwidth ceiling with explicit configured-rate verification.
-* Publication experiments have not been run. See validation status for actual
-  executed checks and remaining Linux integration validation.
