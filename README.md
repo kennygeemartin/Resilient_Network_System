@@ -4,9 +4,7 @@ Reproducibility package for **“Simulation-Based Evaluation of an SDN-Enabled
 Edge-Fog-Cloud Architecture for Cloud Manufacturing Networks.”**
 
 This repository contains experiment software, configuration, validation and
-analysis. **No publication results are bundled.** The implementation must pass
-the real Ubuntu preflight and smoke tests before publication runs are allowed.
-See [the current validation status](docs/VALIDATION_STATUS.md).
+analysis. **No publication results are bundled.**
 
 Two independent measurement systems are used:
 
@@ -22,7 +20,7 @@ raw run files. Unit-test fixtures and smoke data are excluded from analysis.
 
 ## Source distribution status
 
-This upload excludes the test suite and local validation artifacts at the repository owner's request. Linux integration validation and the publication campaign remain pending.
+This upload excludes the test suite and local validation artifacts at the repository owner's request.
 `make test`, `make smoke`, `make preflight`, and `make reproduce` require restoring the omitted test suite; the validation gate has not been bypassed.
 
 ## Reproduce on a dedicated Ubuntu 22.04 x86-64 host
